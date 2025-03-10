@@ -1,9 +1,9 @@
 === Sass To CSS Compiler ===
 Contributors: sajjad67
-Tags: sass,scss,sass-compiler,compiler,stylesheets,enqueue-scripts,cache,converter,minify
+Tags: scss,sass-compiler,compiler,converter,minify
 Requires at least: 5.6
-Tested up to: 6.6
-Stable tag: 1.0.3
+Tested up to: 6.7
+Stable tag: 2.0.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Compile Sass (.scss) files to css files on runtime. No need to compile it on loc
 - Compilation Modes (5 Included)
 - Cache Feature
 
-**Interested in contributing to WP Edit Username?**
+**Interested in contributing to Sass To CSS Compiler?**
 Contact me... sagorh672(at)gmail.com
 
 == Installation ==
@@ -47,6 +47,8 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 1. Compiler Settings
 
 == Changelog ==
+= 2.0.0 =
+- Major changes in codebase. Compatibility checkup for latest wp version 6.7
 = 1.0.3 =
 - Compatibility check for wp 6.6
 = 1.0.2 =
