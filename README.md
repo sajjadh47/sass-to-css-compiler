@@ -4,7 +4,7 @@
 **Contributors:** sajjad67 \
 **Requires at least:** 5.6 \
 **Tested up to:** 6.7 \
-**Stable tag:** 2.0.0 \
+**Stable tag:** 2.0.1 \
 **Requires PHP:** 8.0 \
 **License:** GPLv2 \
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,9 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 ![Compiler Settings](https://ps.w.org/sass-to-css-compiler/assets/screenshot-1.png)
 
 ## Changelog
+
+### 2.0.1
+- Only included files will be converted with this version.
 
 ### 2.0.0
 - Minor changes in codebase only.

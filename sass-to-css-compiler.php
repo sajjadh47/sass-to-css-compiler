@@ -14,7 +14,7 @@
  * Plugin Name:       Sass To CSS Compiler
  * Plugin URI:        https://wordpress.org/plugins/sass-to-css-compiler/
  * Description:       Compile Your Theme-Plugin Sass (.scss) files to .css on the fly.
- * Version:           2.0.0
+ * Version:           2.0.1
  * Author:            Sajjad Hossain Sagor
  * Author URI:        https://sajjadhsagor.com/
  * Requires PHP:      8.1
@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) die;
 /**
  * Currently plugin version.
  */
-define( 'SASS_TO_CSS_COMPILER_VERSION', '2.0.0' );
+define( 'SASS_TO_CSS_COMPILER_VERSION', '2.0.1' );
 
 /**
  * Define Plugin Folders Path

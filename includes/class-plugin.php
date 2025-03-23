@@ -53,7 +53,8 @@ class Sass_To_Css_Compiler
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    2.0.0
+	 * @since 	2.0.0
+	 * @access  public
 	 */
 	public function __construct()
 	{
@@ -171,9 +172,6 @@ class Sass_To_Css_Compiler
 	private function define_public_hooks()
 	{
 		$plugin_public = new Sass_To_Css_Compiler_Public( $this->get_plugin_name(), $this->get_version() );
-
-		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		
 		$this->loader->add_filter( 'style_loader_src', $plugin_public, 'style_loader_src', 101, 2 );
 	}
@@ -181,7 +179,8 @@ class Sass_To_Css_Compiler
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    2.0.0
+	 * @since 	2.0.0
+	 * @access  public
 	 */
 	public function run()
 	{
@@ -192,7 +191,8 @@ class Sass_To_Css_Compiler
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     2.0.0
+	 * @since 	2.0.0
+	 * @access  public
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name()
@@ -203,7 +203,8 @@ class Sass_To_Css_Compiler
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     2.0.0
+	 * @since 	2.0.0
+	 * @access  public
 	 * @return    Sass_To_Css_Compiler_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader()
@@ -214,7 +215,8 @@ class Sass_To_Css_Compiler
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     2.0.0
+	 * @since 	2.0.0
+	 * @access  public
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version()
@@ -224,8 +226,10 @@ class Sass_To_Css_Compiler
 
 	/**
 	 * Compile the provided source code
-	 *
-	 * @return string source code
+	 * 
+	 * @since 	2.0.0
+	 * @access  public
+	 * @return 	string source code
 	 */
 	public static function compile( $source_code = '', $import_path )
 	{
@@ -273,24 +277,35 @@ class Sass_To_Css_Compiler
 	}
 
 	/**
-	 * Save compiled css to a file
+	 * Saves compiled CSS code to a file in the cache directory.
 	 *
-	 * @return boolean
+	 * This function writes the provided CSS code to a file with the specified
+	 * filename in the cache directory. It first checks if the upload directory
+	 * is writable before attempting to save the file.
+	 *
+	 * @since   2.0.0
+	 * @access  public
+	 * @param 	string $code     	The compiled CSS code to be saved.
+	 * @param 	string $filename 	The name of the file to save the CSS code to.
+	 * @return 	bool|void 			Returns true if the save was successful, or void if the upload directory is not writable.
 	 */
 	public static function save( $code, $filename )
 	{
 		if ( ! self::is_upload_dir_writable() ) return;
 		
-		// get cache folder
-		$cache_folder = self::get_cache_dir();
-
-		file_put_contents( $cache_folder . '/' . $filename , $code );
+		file_put_contents( $filename, $code );
 	}
 
 	/**
-	 * Purge all cache
+	 * Purges all cache files from the cache directory.
 	 *
-	 * @return boolean
+	 * This function deletes all files within the cache directory, effectively
+	 * purging the cache. It first checks if the upload directory is writable
+	 * before attempting to delete any files.
+	 *
+	 * @since   2.0.0
+	 * @access  public
+	 * @return 	bool|void Returns true if the purge was successful, or void if the upload directory is not writable.
 	 */
 	public static function purge()
 	{
@@ -299,26 +314,62 @@ class Sass_To_Css_Compiler
 		// get cache folder
 		$cache_folder 	= self::get_cache_dir();
 
-		// check if cache directory exists
-		if ( is_dir( $cache_folder ) )
-		{
-			// get all files from that folder
-			$files 		= glob( $cache_folder . '/*' );
-		
-			foreach( $files as $file )
-			{
-				// iterate files
-				if( is_file( $file ) )
-				
-				unlink( $file ); // delete file
-			}
-		}
+		self::delete_folders_recursively( $cache_folder );
 	}
 
 	/**
-	 * Create upload directory if not exists.
+	 * Deletes a folder and all its contents recursively.
 	 *
-	 * @since     2.0.0
+	 * This function deletes a specified folder and all files and subfolders within it.
+	 * It recursively traverses subfolders to ensure all content is removed.
+	 *
+	 * @since    2.0.0
+	 * @access   public
+	 * @param    string $folder The path to the folder to be deleted.
+	 * @return   bool   True if the folder and its contents were successfully deleted, false otherwise.
+	 */
+	public static function delete_folders_recursively( $folder )
+	{
+		// Check if the folder exists.
+		if ( ! is_dir( $folder ) )
+		{
+			return false; // Folder doesn't exist
+		}
+
+		// Get a list of files and subfolders within the folder, excluding '.' and '..'.
+		$files 		= array_diff( scandir( $folder ), array( '.', '..' ) );
+
+		// Iterate through each file or subfolder.
+		foreach ( $files as $file )
+		{
+			$path 	= $folder . DIRECTORY_SEPARATOR . $file;
+
+			// If it's a subfolder, recursively delete it.
+			if ( is_dir( $path ) )
+			{
+				self::delete_folders_recursively( $path ); // Recursively delete subfolder
+				
+				rmdir( $path ); // Remove empty folder
+			}
+			else
+			{
+				unlink( $path ); // If it's a file, delete it.
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Creates the cache directory if it does not exist.
+	 *
+	 * This function checks if the cache directory, as determined by
+	 * `self::get_cache_dir()`, exists. If it does not, it creates the directory
+	 * with permissions 0700 (owner read, write, execute).
+	 *
+	 * @since   2.0.0
+	 * @access  public
+	 * @return  void
 	 */
 	public static function create_cache_dir()
 	{
@@ -332,9 +383,14 @@ class Sass_To_Css_Compiler
 	}
 
 	/**
-	 * Check if upload directory writable.
+	 * Checks if the WordPress upload directory is writable.
 	 *
-	 * @since     2.0.0
+	 * This function determines if the WordPress upload directory is writable by
+	 * checking the directory returned by `self::get_cache_dir(true)`.
+	 *
+	 * @since   2.0.0
+	 * @access  public
+	 * @return  bool True if the upload directory is writable, false otherwise.
 	 */
 	public static function is_upload_dir_writable()
 	{
@@ -342,9 +398,17 @@ class Sass_To_Css_Compiler
 	}
 
 	/**
-	 * Get compiled file storing cache directory
+	 * Gets the compiled file storage cache directory.
 	 *
-	 * @return boolean
+	 * This function retrieves the cache directory path for storing compiled files.
+	 * It uses WordPress's `wp_upload_dir()` function to determine the base upload
+	 * directory and appends '/scss_cache' to it, unless `$base_dir_only` is set to true.
+	 *
+	 * @since   2.0.0
+	 * @access  public
+	 * @param 	bool   $base_dir_only 	Optional. If true, returns only the base upload directory.
+	 * @param 	string $dir            	Optional. The directory within the uploads array to use. Defaults to 'basedir'.
+	 * @return 	string 					The cache directory path.
 	 */
 	public static function get_cache_dir( $base_dir_only = false, $dir = 'basedir' )
 	{
@@ -353,27 +417,39 @@ class Sass_To_Css_Compiler
 		$upload_dir = $upload[$dir];
 
 		if ( $base_dir_only )
-		{   
-		   return $upload_dir;
+		{
+			return $upload_dir;
 		}
 
 		return $upload_dir . '/scss_cache';
 	}
 
 	/**
-	 * Returns option value
+	 * Retrieves an option value from the WordPress options table.
 	 *
-	 * @return string|array option value
+	 * This function retrieves a specific option value from a given section within the WordPress options table.
+	 * If the option is not found, it returns a default value.
+	 *
+	 * @since    2.0.0
+	 * @access   public
+	 * @param    string $option  			The name of the option to retrieve.
+	 * @param    string $section 			The name of the option section (the key under which options are stored in the database).
+	 * @param    mixed  $default Optional. 	The default value to return if the option is not found. Defaults to an empty string.
+	 * @return   mixed 						The option value, or the default value if the option is not set.
 	 */
 	public static function get_option( $option, $section, $default = '' )
 	{
+		// Retrieve the options array for the given section.
 		$options = get_option( $section );
 
+		// Check if the option exists within the retrieved options array.
 		if ( isset( $options[$option] ) )
 		{
+			// Return the option value.
 			return $options[$option];
 		}
 
+		// If the option is not found, return the default value.
 		return $default;
 	}
 }

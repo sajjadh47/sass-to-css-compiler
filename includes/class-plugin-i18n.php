@@ -16,7 +16,8 @@ class Sass_To_Css_Compiler_i18n
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    2.0.0
+	 * @since 	2.0.0
+	 * @access  public
 	 */
 	public function load_plugin_textdomain()
 	{

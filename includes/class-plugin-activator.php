@@ -15,7 +15,8 @@ class Sass_To_Css_Compiler_Activator
 	/**
 	 * Create cache folder for the plugin if not exists
 	 *
-	 * @since    2.0.0
+	 * @since 	2.0.0
+	 * @access  public
 	 */
 	public static function activate()
 	{

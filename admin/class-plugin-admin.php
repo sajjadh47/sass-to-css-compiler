@@ -3,8 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, other methods and
- * enqueue the admin-specific stylesheet and JavaScript.
+ * Defines the plugin name, version and other methods.
  *
  * @package    Sass_To_Css_Compiler
  * @subpackage Sass_To_Css_Compiler/admin
@@ -51,7 +50,8 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    2.0.0
+	 * @since 	 2.0.0
+	 * @access   public
 	 * @param    string    $plugin_name       The name of this plugin.
 	 * @param    string    $version    The version of this plugin.
 	 */
@@ -69,7 +69,8 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    2.0.0
+	 * @since 	 2.0.0
+	 * @access   public
 	 */
 	public function enqueue_styles()
 	{
@@ -85,7 +86,8 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    2.0.0
+	 * @since 	 2.0.0
+	 * @access   public
 	 */
 	public function enqueue_scripts()
 	{
@@ -105,8 +107,8 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Adds a settings link to the plugin's action links on the plugin list table.
 	 *
-	 * @since    2.0.0
-	 *
+	 * @since 	 2.0.0
+	 * @access   public
 	 * @param    array $links The existing array of plugin action links.
 	 * @return   array The updated array of plugin action links, including the settings link.
 	 */
@@ -120,7 +122,8 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Adds the plugin settings page to the WordPress dashboard menu.
 	 *
-	 * @since    2.0.0
+	 * @since 	 2.0.0
+	 * @access   public
 	 */
 	public function admin_menu()
 	{
@@ -137,7 +140,8 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Renders the plugin settings page form.
 	 *
-	 * @since    2.0.0
+	 * @since 	 2.0.0
+	 * @access   public
 	 */
 	public function menu_page()
 	{
@@ -147,7 +151,8 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Register Plugin Options Via Settings API
 	 *
-	 * @since    2.0.0
+	 * @since 	 2.0.0
+	 * @access   public
 	 */
 	public function admin_init()
 	{
@@ -163,9 +168,9 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Returns the settings sections for the plugin settings page.
 	 *
-	 * @since 2.0.0
-	 *
-	 * @return array An array of settings sections, where each section is an array
+	 * @since 	 2.0.0
+	 * @access   public
+	 * @return 	 array An array of settings sections, where each section is an array
 	 *               with 'id' and 'title' keys.
 	 */
 	public function get_settings_sections()
@@ -183,9 +188,9 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Returns all the settings fields for the plugin settings page.
 	 *
-	 * @since 2.0.0
-	 *
-	 * @return array An array of settings fields, organized by section ID.  Each
+	 * @since 	 2.0.0
+	 * @access   public
+	 * @return 	 array An array of settings fields, organized by section ID.  Each
 	 *               section ID is a key in the array, and the value is an array
 	 *               of settings fields for that section. Each settings field is
 	 *               an array with 'name', 'label', 'type', 'desc', and other keys
@@ -218,23 +223,8 @@ class Sass_To_Css_Compiler_Admin
 					'desc'    => __( 'Checking this box will enable compiling .scss files from themes & plugins folders', 'sass-to-css-compiler' )
 				),
 				array(
-					'name'    => 'skip_external',
-					'label'   => __( 'Ignore External Files', 'sass-to-css-compiler' ),
-					'type'    => 'checkbox',
-					'always_checked' => 'on',
-					'disabled'=> 'disabled',
-					'desc'    => __( 'Always Ignore .scss files from CDNs, other domains (external files) and relative paths (built in files)', 'sass-to-css-compiler' )
-				),
-				array(
-					'name'    => 'exclude',
-					'label'   => __( 'Exclude Files From Compiling', 'sass-to-css-compiler' ),
-					'type'    => 'text',
-					'desc'    => __( 'Add comma separated scss files name to exclude it from Compiling', 'sass-to-css-compiler' ),
-					'placeholder' => __( 'admin.scss, plugins.scss, backend.scss', 'sass-to-css-compiler' )
-				),
-				array(
 					'name'    => 'include',
-					'label'   => __( 'Include Files From Compiling', 'sass-to-css-compiler' ),
+					'label'   => __( 'Files To Compile', 'sass-to-css-compiler' ),
 					'type'    => 'text',
 					'desc'    => __( 'Add comma separated scss files name to include it while Compiling... Note if added any! only those files will be compiled', 'sass-to-css-compiler' ),
 					'placeholder' => __( 'menu.scss, footer.scss', 'sass-to-css-compiler' )
@@ -262,7 +252,8 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Show plugin notices in the admin area.
 	 *
-	 * @since    2.0.0
+	 * @since 	 2.0.0
+	 * @access   public
 	 */
 	public function admin_notices()
 	{
@@ -298,23 +289,25 @@ class Sass_To_Css_Compiler_Admin
 	/**
 	 * Add a admin node menu item for clearing the cache
 	 *
-	 * @since    2.0.0
+	 * @since 	 2.0.0
+	 * @access   public
 	 * @param    array $wp_admin_bar class WP_Admin_Bar object.
 	 */
 	public function admin_bar_menu( $wp_admin_bar )
 	{
+		// check if current page is plugin settings page
 		// check if the user is logged in as well as admin bar is not disabled
-		if ( current_user_can( 'manage_options' ) && is_admin_bar_showing() )
+		if ( function_exists( 'get_current_screen' ) && current_user_can( 'manage_options' ) && is_admin_bar_showing() && get_current_screen()->id == 'toplevel_page_sass-to-css-compiler' )
 		{
-			$link 	= admin_url( 'admin.php?page=sass-to-css-compiler' );
+			$link 		= admin_url( 'admin.php?page=sass-to-css-compiler' );
 
 			// Generate a nonce
-			$nonce 	= wp_create_nonce( 'sass_to_css_compiler_action' );
+			$nonce 		= wp_create_nonce( 'sass_to_css_compiler_action' );
 
 			// Add the nonce to the URL
-			$link 	= add_query_arg( array( '_wpnonce' => $nonce, 'action' => 'purge_sass_to_css_compiled_files' ), $link );
+			$link 		= add_query_arg( array( '_wpnonce' => $nonce, 'action' => 'purge_sass_to_css_compiled_files' ), $link );
 			
-			$args 	= array(
+			$args 		= array(
 				'id'    => 'sass-to-css-compiler-purge-cache',
 				'title' => sprintf( '<a href="%s">%s</a>', esc_url( $link ), __( 'Purge Compiled SASS Cache', 'sass-to-css-compiler' ) )
 			);

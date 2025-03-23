@@ -3,7 +3,7 @@ Contributors: sajjad67
 Tags: scss, sass-compiler, compiler, converter, minify
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 Requires PHP: 8.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ Compile Sass (.scss) files to css files on runtime. No need to compile it on loc
 
 = Features: =
 - Enable/Disable Compilation Any Time
-- Exclude/Include Stylesheets By File Name
+- Include Sass Stylesheets By File Name
 - Compilation Modes (5 Included)
 - Cache Feature
 
@@ -48,6 +48,8 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 1. Compiler Settings
 
 == Changelog ==
+= 2.0.1 =
+- Only included files will be converted with this version
 = 2.0.0 =
 - Major changes in codebase. Compatibility checkup for latest wp version 6.7
 = 1.0.3 =

@@ -51,7 +51,7 @@ class Sajjad_Dev_Settings_API
 	 */
 	public function set_sections( $sections )
 	{
-		$this->settings_sections = $sections;
+		$this->settings_sections 	= $sections;
 
 		return $this;
 	}
@@ -82,7 +82,7 @@ class Sajjad_Dev_Settings_API
 
 	public function add_field( $section, $field )
 	{
-		$defaults = array(
+		$defaults 							= array(
 			'name'  => '',
 			'label' => '',
 			'desc'  => '',
@@ -91,9 +91,9 @@ class Sajjad_Dev_Settings_API
 			'type'  => 'text' //default type is text
 		);
 
-		$arg = wp_parse_args( $field, $defaults );
+		$arg 								= wp_parse_args( $field, $defaults );
 		
-		$this->settings_fields[$section][] = $arg;
+		$this->settings_fields[$section][] 	= $arg;
 
 		return $this;
 	}
@@ -118,20 +118,20 @@ class Sajjad_Dev_Settings_API
 
 			if ( isset( $section['desc'] ) && ! empty( $section['desc'] ) )
 			{
-				$section['desc'] = '<div class="inside">' . $section['desc'] . '</div>';
+				$section['desc'] 	= '<div class="inside">' . $section['desc'] . '</div>';
 				
-				$callback = function() use ( $section )
+				$callback 			= function() use ( $section )
 				{
 					echo str_replace( '"', '\"', $section['desc'] );
 				};
 			}
 			else if ( isset( $section['callback'] ) )
 			{
-				$callback = $section['callback'];
+				$callback 			= $section['callback'];
 			}
 			else
 			{
-				$callback = null;
+				$callback 			= null;
 			}
 
 			add_settings_section( $section['id'], $section['title'], $callback, $section['id'] );
@@ -329,6 +329,31 @@ class Sajjad_Dev_Settings_API
 	}
 
 	/**
+	 * Displays a multi selectbox for a settings field
+	 *
+	 * @param array   $args settings field args
+	 */
+	public function callback_multiselect( $args )
+	{
+		$value     = $this->get_option( $args['id'], $args['section'], array() );
+
+		$size      = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
+
+		$html      = sprintf( '<select class="%1$s" name="%2$s[%3$s][]" id="%2$s[%3$s]" multiple="multiple" style="min-width: 25rem;">', $size, $args['section'], $args['id'] );
+
+		foreach ( $args['options'] as $key => $label )
+		{
+			$html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( true, in_array( $key, $value ), false ), $label );
+		}
+
+		$html     .= sprintf( '</select>' );
+
+		$html     .= $this->get_field_description( $args );
+
+		echo $html;
+	}
+
+	/**
 	 * Displays a textarea for a settings field
 	 *
 	 * @param array   $args settings field args
@@ -363,12 +388,12 @@ class Sajjad_Dev_Settings_API
 	 */
 	public function callback_wysiwyg( $args )
 	{
-		$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
-		$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : '500px';
+		$value 					= $this->get_option( $args['id'], $args['section'], $args['std'] );
+		$size  					= isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : '500px';
 
 		echo '<div style="max-width: ' . $size . ';">';
 
-		$editor_settings = array(
+		$editor_settings 		= array(
 			'teeny'         => true,
 			'textarea_name' => $args['section'] . '[' . $args['id'] . ']',
 			'textarea_rows' => 10
@@ -376,7 +401,7 @@ class Sajjad_Dev_Settings_API
 
 		if ( isset( $args['options'] ) && is_array( $args['options'] ) )
 		{
-			$editor_settings = array_merge( $editor_settings, $args['options'] );
+			$editor_settings 	= array_merge( $editor_settings, $args['options'] );
 		}
 
 		wp_editor( $value, $args['section'] . '-' . $args['id'], $editor_settings );
@@ -444,14 +469,14 @@ class Sajjad_Dev_Settings_API
 	 */
 	public function callback_pages( $args )
 	{
-		$dropdown_args = array(
+		$dropdown_args 	= array(
 			'selected' => esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) ),
 			'name'     => $args['section'] . '[' . $args['id'] . ']',
 			'id'       => $args['section'] . '[' . $args['id'] . ']',
 			'echo'     => 0
 		);
 		
-		$html = wp_dropdown_pages( $dropdown_args );
+		$html 			= wp_dropdown_pages( $dropdown_args );
 		
 		echo $html;
 	}
@@ -463,15 +488,15 @@ class Sajjad_Dev_Settings_API
 	 */
 	public function callback_categories( $args )
 	{
-		$dropdown_args = array(
-			'selected' => esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) ),
-			'name'     => $args['section'] . '[' . $args['id'] . ']',
-			'id'       => $args['section'] . '[' . $args['id'] . ']',
-			'echo'     => 0,
-			'hide_empty' => 0
+		$dropdown_args 	= array(
+			'selected' 		=> esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) ),
+			'name'     		=> $args['section'] . '[' . $args['id'] . ']',
+			'id'       		=> $args['section'] . '[' . $args['id'] . ']',
+			'echo'     		=> 0,
+			'hide_empty' 	=> 0
 		);
 		
-		$html = wp_dropdown_categories( $dropdown_args );
+		$html 			= wp_dropdown_categories( $dropdown_args );
 		
 		echo $html;
 	}
@@ -483,17 +508,17 @@ class Sajjad_Dev_Settings_API
 	 */
 	public function callback_users( $args )
 	{
-		$dropdown_args = array(
-			'selected' => esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) ),
-			'name'     => $args['section'] . '[' . $args['id'] . ']',
-			'id'       => $args['section'] . '[' . $args['id'] . ']',
-			'echo'     => 0,
-			'role'     => isset( $args['role'] ) ? $args['role'] : '',
-			'role__in' => isset( $args['role__in'] ) ? $args['role__in'] : array(),
-			'role__not_in' => isset( $args['role__not_in'] ) ? $args['role__not_in'] : array()
+		$dropdown_args 	= array(
+			'selected' 		=> esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) ),
+			'name'     		=> $args['section'] . '[' . $args['id'] . ']',
+			'id'       		=> $args['section'] . '[' . $args['id'] . ']',
+			'echo'    		=> 0,
+			'role'     		=> isset( $args['role'] ) ? $args['role'] : '',
+			'role__in' 		=> isset( $args['role__in'] ) ? $args['role__in'] : array(),
+			'role__not_in' 	=> isset( $args['role__not_in'] ) ? $args['role__not_in'] : array()
 		);
 		
-		$html = wp_dropdown_users( $dropdown_args );
+		$html 			= wp_dropdown_users( $dropdown_args );
 		
 		echo $html;
 	}
@@ -512,12 +537,12 @@ class Sajjad_Dev_Settings_API
 
 		foreach( $options as $option_slug => $option_value )
 		{
-			$sanitize_callback = $this->get_sanitize_callback( $option_slug );
+			$sanitize_callback 				= $this->get_sanitize_callback( $option_slug );
 
 			// If callback is set, call it
 			if ( $sanitize_callback )
 			{
-				$options[ $option_slug ] = call_user_func( $sanitize_callback, $option_value );
+				$options[ $option_slug ] 	= call_user_func( $sanitize_callback, $option_value );
 				
 				continue;
 			}
@@ -585,9 +610,9 @@ class Sajjad_Dev_Settings_API
 	 */
 	public function show_navigation()
 	{
-		$html = '<h2 class="nav-tab-wrapper">';
+		$html 		= '<h2 class="nav-tab-wrapper">';
 
-		$count = count( $this->settings_sections );
+		$count 		= count( $this->settings_sections );
 
 		// don't show the navigation if only one section exists
 		if ( $count === 1 )
@@ -597,10 +622,10 @@ class Sajjad_Dev_Settings_API
 
 		foreach ( $this->settings_sections as $tab )
 		{
-			$html .= sprintf( '<a href="#%1$s" class="nav-tab" id="%1$s-tab">%2$s</a>', $tab['id'], $tab['title'] );
+			$html 	.= sprintf( '<a href="#%1$s" class="nav-tab" id="%1$s-tab">%2$s</a>', $tab['id'], $tab['title'] );
 		}
 
-		$html .= '</h2>';
+		$html 		.= '</h2>';
 
 		echo $html;
 	}
