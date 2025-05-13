@@ -1,9 +1,9 @@
 === Sass To CSS Compiler ===
-Contributors: sajjad67
 Tags: scss, sass-compiler, compiler, converter, minify
+Contributors: sajjad67
 Requires at least: 5.6
-Tested up to: 6.7
-Stable tag: 2.0.1
+Tested up to: 6.8
+Stable tag: 2.0.2
 Requires PHP: 8.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,13 +14,10 @@ Compile Your Theme-Plugin Sass (.scss) files to .css on the fly.
 Compile Sass (.scss) files to css files on runtime. No need to compile it on local & upload it online... Now you can compile your direct scss source code into css code easily with a minute...
 
 = Features: =
-- Enable/Disable Compilation Any Time
-- Include Sass Stylesheets By File Name
-- Compilation Modes (5 Included)
-- Cache Feature
-
-**Interested in contributing to Sass To CSS Compiler?**
-Contact me... sagorh672(at)gmail.com
+- Toggle Compilation On or Off Anytime
+- Add Sass Stylesheets by Filename
+- Choose from 5 Compilation Modes
+- Enable Caching for Faster Processing
 
 == Installation ==
 To add a WordPress Plugin using the built-in plugin installer:
@@ -48,6 +45,8 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 1. Compiler Settings
 
 == Changelog ==
+= 2.0.2 =
+- Checked for latest wp version 6.8
 = 2.0.1 =
 - Only included files will be converted with this version
 = 2.0.0 =

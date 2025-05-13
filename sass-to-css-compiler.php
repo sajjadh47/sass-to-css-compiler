@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -8,16 +7,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @since             2.0.0
  * @package           Sass_To_Css_Compiler
+ * @author            Sajjad Hossain Sagor <sagorh672@gmail.com>
  *
  * Plugin Name:       Sass To CSS Compiler
  * Plugin URI:        https://wordpress.org/plugins/sass-to-css-compiler/
  * Description:       Compile Your Theme-Plugin Sass (.scss) files to .css on the fly.
- * Version:           2.0.1
+ * Version:           2.0.2
+ * Requires at least: 6.5
+ * Requires PHP:      7.4
  * Author:            Sajjad Hossain Sagor
  * Author URI:        https://sajjadhsagor.com/
- * Requires PHP:      8.1
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       sass-to-css-compiler
@@ -25,12 +25,14 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) die;
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+}
 
 /**
  * Currently plugin version.
  */
-define( 'SASS_TO_CSS_COMPILER_VERSION', '2.0.1' );
+define( 'SASS_TO_CSS_COMPILER_PLUGIN_VERSION', '2.0.2' );
 
 /**
  * Define Plugin Folders Path
@@ -43,41 +45,39 @@ define( 'SASS_TO_CSS_COMPILER_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-plugin-activator.php
- * 
+ * This action is documented in includes/class-sass-to-css-compiler-activator.php
+ *
  * @since    2.0.0
  */
-function activate_sass_to_css_compiler()
-{
-	require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-plugin-activator.php';
-	
-	Sass_To_Css_Compiler_Activator::activate();
+function on_activate_sass_to_css_compiler() {
+	require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-sass-to-css-compiler-activator.php';
+
+	Sass_To_Css_Compiler_Activator::on_activate();
 }
 
-register_activation_hook( __FILE__, 'activate_sass_to_css_compiler' );
+register_activation_hook( __FILE__, 'on_activate_sass_to_css_compiler' );
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-deactivator.php
- * 
+ * This action is documented in includes/class-sass-to-css-compiler-deactivator.php
+ *
  * @since    2.0.0
  */
-function deactivate_sass_to_css_compiler()
-{
-	require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-plugin-deactivator.php';
-	
-	Sass_To_Css_Compiler_Deactivator::deactivate();
+function on_deactivate_sass_to_css_compiler() {
+	require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-sass-to-css-compiler-deactivator.php';
+
+	Sass_To_Css_Compiler_Deactivator::on_deactivate();
 }
 
-register_deactivation_hook( __FILE__, 'deactivate_sass_to_css_compiler' );
+register_deactivation_hook( __FILE__, 'on_deactivate_sass_to_css_compiler' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
- * 
+ *
  * @since    2.0.0
  */
-require SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-plugin.php';
+require SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-sass-to-css-compiler.php';
 
 /**
  * Begins execution of the plugin.
@@ -88,10 +88,9 @@ require SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-plugin.php';
  *
  * @since    2.0.0
  */
-function run_sass_to_css_compiler()
-{
+function run_sass_to_css_compiler() {
 	$plugin = new Sass_To_Css_Compiler();
-	
+
 	$plugin->run();
 }
 

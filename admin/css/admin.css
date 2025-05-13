@@ -1,3 +1,12 @@
 #wp-admin-bar-sass-to-css-compiler-purge-cache a {
-	color: white;
+	color: #f0f0f1;
+}
+
+#wp-admin-bar-sass-to-css-compiler-purge-cache a:hover {
+	color: #2271b1;
+}
+
+.formatting_preview {
+	display: block;
+	margin-top: 10px;
 }
