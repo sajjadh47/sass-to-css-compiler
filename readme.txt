@@ -1,11 +1,12 @@
 === Sass To CSS Compiler ===
 Tags: scss, sass-compiler, compiler, converter, minify
 Contributors: sajjad67
-Requires at least: 5.6
+Author: Sajjad Hossain Sagor
 Tested up to: 6.8
+Requires at least: 5.6
 Stable tag: 2.0.2
-Requires PHP: 8.0
-License: GPLv2
+Requires PHP: 8.2
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Compile Your Theme-Plugin Sass (.scss) files to .css on the fly.

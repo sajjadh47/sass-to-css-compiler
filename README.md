@@ -2,7 +2,7 @@
 
 **Tags:** sass, scss, sass-compiler, compiler, stylesheets, enqueue-scripts, cache, converter, minify \
 **Tested up to:** 6.8 \
-**Requires PHP:** 8.0
+**Requires PHP:** 8.2
 
 Compile Your Theme-Plugin Sass (.scss) files to .css on the fly.
 
