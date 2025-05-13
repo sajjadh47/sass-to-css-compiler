@@ -15,7 +15,7 @@
  * Description:       Compile Your Theme-Plugin Sass (.scss) files to .css on the fly.
  * Version:           2.0.2
  * Requires at least: 6.5
- * Requires PHP:      7.4
+ * Requires PHP:      8.2
  * Author:            Sajjad Hossain Sagor
  * Author URI:        https://sajjadhsagor.com/
  * License:           GPL-2.0+
