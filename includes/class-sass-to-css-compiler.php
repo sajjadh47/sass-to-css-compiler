@@ -61,7 +61,7 @@ class Sass_To_Css_Compiler {
 	 * @access    public
 	 */
 	public function __construct() {
-		$this->version     = defined( 'SASS_TO_CSS_COMPILER_VERSION' ) ? SASS_TO_CSS_COMPILER_VERSION : '1.0.0';
+		$this->version     = defined( 'SASS_TO_CSS_COMPILER_PLUGIN_VERSION' ) ? SASS_TO_CSS_COMPILER_PLUGIN_VERSION : '1.0.0';
 		$this->plugin_name = 'sass-to-css-compiler';
 
 		$this->load_dependencies();
