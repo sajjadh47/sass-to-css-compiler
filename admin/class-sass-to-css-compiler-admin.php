@@ -324,9 +324,9 @@ class Sass_To_Css_Compiler_Admin {
 	/**
 	 * Add a admin node menu item for clearing the cache
 	 *
-	 * @since    2.0.0
-	 * @access   public
-	 * @param    array $wp_admin_bar class WP_Admin_Bar object.
+	 * @since     2.0.0
+	 * @access    public
+	 * @param     array $wp_admin_bar class WP_Admin_Bar object.
 	 */
 	public function admin_bar_menu( $wp_admin_bar ) {
 		// check if current page is plugin settings page & the user is logged in as well as admin bar is not disabled.
