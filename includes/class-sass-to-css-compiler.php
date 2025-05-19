@@ -216,8 +216,8 @@ class Sass_To_Css_Compiler {
 	 * Compile the provided source code.
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @param     string $source_code The original sass source code.
 	 * @param     string $import_path The import path of @import directive used in the sass source code.
 	 * @return    string              Compiled source code
@@ -285,8 +285,8 @@ class Sass_To_Css_Compiler {
 	 * is writable before attempting to save the file.
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @param     string $code     The compiled CSS code to be saved.
 	 * @param     string $filename The name of the file to save the CSS code to.
 	 * @return    bool|void        Returns true if the save was successful, or void if the upload directory is not writable.
@@ -315,8 +315,8 @@ class Sass_To_Css_Compiler {
 	 * before attempting to delete any files.
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @return    bool|void Returns true if the purge was successful, or void if the upload directory is not writable.
 	 */
 	public static function purge() {
@@ -337,8 +337,8 @@ class Sass_To_Css_Compiler {
 	 * It recursively traverses subfolders to ensure all content is removed.
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @param     string $folder The path to the folder to be deleted.
 	 * @return    bool           True if the folder and its contents were successfully deleted, false otherwise.
 	 */
@@ -379,8 +379,8 @@ class Sass_To_Css_Compiler {
 	 * Create a directory recursively using WP_Filesystem.
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @param     string $path The directory path.
 	 * @return    bool         True on success, false on failure.
 	 */
@@ -420,8 +420,8 @@ class Sass_To_Css_Compiler {
 	 * with permissions 0700 (owner read, write, execute).
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @return    void
 	 */
 	public static function create_cache_dir() {
@@ -452,8 +452,8 @@ class Sass_To_Css_Compiler {
 	 * checking the directory returned by `self::get_cache_dir(true)`.
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @return    bool True if the upload directory is writable, false otherwise.
 	 */
 	public static function is_upload_dir_writable() {
@@ -482,8 +482,8 @@ class Sass_To_Css_Compiler {
 	 * directory and appends '/scss_cache' to it, unless `$base_dir_only` is set to true.
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @param     bool   $base_dir_only Optional. If true, returns only the base upload directory.
 	 * @param     string $dir           Optional. The directory within the uploads array to use. Defaults to 'basedir'.
 	 * @return    string $dir           The cache directory path.
@@ -507,8 +507,8 @@ class Sass_To_Css_Compiler {
 	 * value for the specified field.
 	 *
 	 * @since     2.0.0
-	 * @access    public
 	 * @static
+	 * @access    public
 	 * @param     string $option        The name of the settings field.
 	 * @param     string $section       The name of the section this field belongs to. This corresponds
 	 *                                  to the option name used in `register_setting()`.
