@@ -75,11 +75,11 @@ class Sass_To_Css_Compiler {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Sass_To_Css_Compiler_Loader.  Orchestrates the hooks of the plugin.
-	 * - Sass_To_Css_Compiler_i18n.    Defines internationalization functionality.
-	 * - Sajjad_Dev_Settings_API. Provides an interface for interacting with the WordPress Options API.
-	 * - Sass_To_Css_Compiler_Admin.   Defines all hooks for the admin area.
-	 * - Sass_To_Css_Compiler_Public.  Defines all hooks for the public side of the site.
+	 * - Sass_To_Css_Compiler_Loader. Orchestrates the hooks of the plugin.
+	 * - Sass_To_Css_Compiler_i18n.   Defines internationalization functionality.
+	 * - Sajjad_Dev_Settings_API.     Provides an interface for interacting with the WordPress Options API.
+	 * - Sass_To_Css_Compiler_Admin.  Defines all hooks for the admin area.
+	 * - Sass_To_Css_Compiler_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -217,6 +217,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @param     string $source_code The original sass source code.
 	 * @param     string $import_path The import path of @import directive used in the sass source code.
 	 * @return    string              Compiled source code
@@ -285,6 +286,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @param     string $code     The compiled CSS code to be saved.
 	 * @param     string $filename The name of the file to save the CSS code to.
 	 * @return    bool|void        Returns true if the save was successful, or void if the upload directory is not writable.
@@ -314,6 +316,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @return    bool|void Returns true if the purge was successful, or void if the upload directory is not writable.
 	 */
 	public static function purge() {
@@ -335,6 +338,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @param     string $folder The path to the folder to be deleted.
 	 * @return    bool           True if the folder and its contents were successfully deleted, false otherwise.
 	 */
@@ -376,6 +380,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @param     string $path The directory path.
 	 * @return    bool         True on success, false on failure.
 	 */
@@ -416,6 +421,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @return    void
 	 */
 	public static function create_cache_dir() {
@@ -447,6 +453,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @return    bool True if the upload directory is writable, false otherwise.
 	 */
 	public static function is_upload_dir_writable() {
@@ -476,6 +483,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @param     bool   $base_dir_only Optional. If true, returns only the base upload directory.
 	 * @param     string $dir           Optional. The directory within the uploads array to use. Defaults to 'basedir'.
 	 * @return    string $dir           The cache directory path.
@@ -500,6 +508,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * @since     2.0.0
 	 * @access    public
+	 * @static
 	 * @param     string $option        The name of the settings field.
 	 * @param     string $section       The name of the section this field belongs to. This corresponds
 	 *                                  to the option name used in `register_setting()`.

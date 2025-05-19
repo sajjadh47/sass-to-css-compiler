@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the definition of the WP_Edit_Username_Admin class, which
+ * This file contains the definition of the Sass_To_Css_Compiler_Admin class, which
  * is used to load the plugin's admin-specific functionality.
  *
  * @package       Sass_To_Css_Compiler
