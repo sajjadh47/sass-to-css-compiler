@@ -57,6 +57,10 @@ class Sass_To_Css_Compiler_Public {
 	 * @return    string $src    The compiled src uri of the stylesheet or original src uri.
 	 */
 	public function style_loader_src( $src, $handle ) {
+		if ( empty( $handle ) ) {
+			return;
+		}
+
 		// if stylesheet is built in wp don't touch it.
 		$built_in_script = preg_match_all( '/(\/wp-includes\/)|(\/wp-admin\/)/', $src, $matches );
 

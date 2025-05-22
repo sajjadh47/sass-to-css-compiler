@@ -77,7 +77,7 @@ class Sass_To_Css_Compiler {
 	 *
 	 * - Sass_To_Css_Compiler_Loader. Orchestrates the hooks of the plugin.
 	 * - Sass_To_Css_Compiler_i18n.   Defines internationalization functionality.
-	 * - Sajjad_Dev_Settings_API.     Provides an interface for interacting with the WordPress Options API.
+	 * - Sajjad_Dev_Settings_API.     Provides an interface for interacting with the WordPress Settings API.
 	 * - Sass_To_Css_Compiler_Admin.  Defines all hooks for the admin area.
 	 * - Sass_To_Css_Compiler_Public. Defines all hooks for the public side of the site.
 	 *
@@ -101,7 +101,7 @@ class Sass_To_Css_Compiler {
 		require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-sass-to-css-compiler-i18n.php';
 
 		/**
-		 * The class responsible for defining an interface for interacting with the WordPress Options API.
+		 * The class responsible for defining an interface for interacting with the WordPress Settings API.
 		 */
 		require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-sajjad-dev-settings-api.php';
 
