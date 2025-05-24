@@ -1,5 +1,7 @@
 # Sass To CSS Compiler
 
+[![Plugin Banner](https://ps.w.org/sass-to-css-compiler/assets/banner-772x250.png)](https://wordpress.org/plugins/sass-to-css-compiler/)
+
 **Tags:** sass, scss, sass-compiler, compiler, stylesheets, enqueue-scripts, cache, converter, minify \
 **Tested up to:** 6.8 \
 **Requires PHP:** 8.2
