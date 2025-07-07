@@ -13,8 +13,7 @@ use ScssPhp\ScssPhp\Compiler;
 /**
  * The core plugin class.
  *
- * This is used to define internationalization, admin-specific hooks, and
- * public-facing hooks.
+ * This is used to define admin-specific hooks and public-facing hooks.
  *
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
@@ -54,7 +53,7 @@ class Sass_To_Css_Compiler {
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
-	 * Load the dependencies, define the locale, and set the hooks for the admin area and
+	 * Load the dependencies, set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
 	 * @since     2.0.0
@@ -65,7 +64,6 @@ class Sass_To_Css_Compiler {
 		$this->plugin_name = 'sass-to-css-compiler';
 
 		$this->load_dependencies();
-		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 	}
@@ -76,7 +74,6 @@ class Sass_To_Css_Compiler {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Sass_To_Css_Compiler_Loader. Orchestrates the hooks of the plugin.
-	 * - Sass_To_Css_Compiler_i18n.   Defines internationalization functionality.
 	 * - Sajjad_Dev_Settings_API.     Provides an interface for interacting with the WordPress Settings API.
 	 * - Sass_To_Css_Compiler_Admin.  Defines all hooks for the admin area.
 	 * - Sass_To_Css_Compiler_Public. Defines all hooks for the public side of the site.
@@ -95,12 +92,6 @@ class Sass_To_Css_Compiler {
 		require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-sass-to-css-compiler-loader.php';
 
 		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-sass-to-css-compiler-i18n.php';
-
-		/**
 		 * The class responsible for defining an interface for interacting with the WordPress Settings API.
 		 */
 		require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'includes/class-sajjad-dev-settings-api.php';
@@ -117,21 +108,6 @@ class Sass_To_Css_Compiler {
 		require_once SASS_TO_CSS_COMPILER_PLUGIN_PATH . 'public/class-sass-to-css-compiler-public.php';
 
 		$this->loader = new Sass_To_Css_Compiler_Loader();
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the Sass_To_Css_Compiler_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since     2.0.0
-	 * @access    private
-	 */
-	private function set_locale() {
-		$plugin_i18n = new Sass_To_Css_Compiler_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 	}
 
 	/**
@@ -179,8 +155,7 @@ class Sass_To_Css_Compiler {
 	}
 
 	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
+	 * The name of the plugin used to uniquely identify it within the context of WordPress.
 	 *
 	 * @since     2.0.0
 	 * @access    public

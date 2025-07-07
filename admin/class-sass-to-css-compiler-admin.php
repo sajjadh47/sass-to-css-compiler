@@ -118,11 +118,11 @@ class Sass_To_Css_Compiler_Admin {
 	public function admin_menu() {
 		add_menu_page(
 			__( 'Sass To CSS Compiler', 'sass-to-css-compiler' ),
-			__( 'Sass To CSS Compiler', 'sass-to-css-compiler' ),
+			__( 'Sass To CSS', 'sass-to-css-compiler' ),
 			'manage_options',
 			'sass-to-css-compiler',
 			array( $this, 'menu_page' ),
-			'dashicons-admin-tools'
+			'dashicons-editor-code'
 		);
 	}
 
