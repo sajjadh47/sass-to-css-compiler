@@ -4,7 +4,7 @@ Contributors: sajjad67
 Author: Sajjad Hossain Sagor
 Tested up to: 6.8
 Requires at least: 5.6
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 Requires PHP: 8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,8 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 1. Compiler Settings
 
 == Changelog ==
+= 2.0.3 =
+- Fixed issue: typo giving fatal error
 = 2.0.2 =
 - Checked for latest wp version 6.8
 = 2.0.1 =
