@@ -52,6 +52,9 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 
 ## Changelog
 
+### 2.0.4
+* Fixed issue: PHP v8.1 warning
+
 ### 2.0.3
 * Fixed issue: typo giving fatal error
 
