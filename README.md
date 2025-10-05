@@ -53,10 +53,10 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 ## Changelog
 
 ### 2.0.4
-* Fixed issue: PHP v8.1 warning
+- Fixed issue: PHP v8.1 warning
 
 ### 2.0.3
-* Fixed issue: typo giving fatal error
+- Fixed issue: typo giving fatal error
 
 ### 2.0.2
 - Checked for latest wp version 6.8
