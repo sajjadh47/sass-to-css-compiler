@@ -2,9 +2,9 @@
 Tags: scss, sass-compiler, compiler, converter, minify
 Contributors: sajjad67
 Author: Sajjad Hossain Sagor
-Tested up to: 6.8
+Tested up to: 6.9
 Requires at least: 5.6
-Stable tag: 2.0.3
+Stable tag: 2.0.5
 Requires PHP: 8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,8 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 1. Compiler Settings
 
 == Changelog ==
+= 2.0.5 =
+- Checked for latest wp version 6.9
 = 2.0.4 =
 - Fixed issue: PHP v8.1 warning
 = 2.0.3 =

@@ -3,7 +3,7 @@
 [![Plugin Banner](https://ps.w.org/sass-to-css-compiler/assets/banner-772x250.png)](https://wordpress.org/plugins/sass-to-css-compiler/)
 
 **Tags:** sass, scss, sass-compiler, compiler, stylesheets, enqueue-scripts, cache, converter, minify \
-**Tested up to:** 6.8 \
+**Tested up to:** 6.9 \
 **Requires PHP:** 8.2
 
 Compile Your Theme-Plugin Sass (.scss) files to .css on the fly.
@@ -51,6 +51,9 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 ![Compiler Settings](https://ps.w.org/sass-to-css-compiler/assets/screenshot-1.png)
 
 ## Changelog
+
+### 2.0.5
+- Checked for latest wp version 6.9
 
 ### 2.0.4
 - Fixed issue: PHP v8.1 warning
