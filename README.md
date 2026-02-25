@@ -52,6 +52,9 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 
 ## Changelog
 
+### 2.0.6
+- Fixed issue: PHP Warning: Attempt to read property "id" on null
+
 ### 2.0.5
 - Checked for latest wp version 6.9
 

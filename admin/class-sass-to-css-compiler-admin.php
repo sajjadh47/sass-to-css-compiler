@@ -329,8 +329,30 @@ class Sass_To_Css_Compiler_Admin {
 	 * @param     array $wp_admin_bar class WP_Admin_Bar object.
 	 */
 	public function admin_bar_menu( $wp_admin_bar ) {
-		// check if current page is plugin settings page & the user is logged in as well as admin bar is not disabled.
-		if ( function_exists( 'get_current_screen' ) && current_user_can( 'manage_options' ) && is_admin_bar_showing() && 'toplevel_page_sass-to-css-compiler' === get_current_screen()->id ) {
+		// Check if we are even in the admin area.
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		// Check if the function exists (prevents fatal errors on frontend).
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return;
+		}
+
+		$current_screen = get_current_screen();
+
+		// Check if it's actually an object (prevents warnings/notices).
+		if ( ! $current_screen instanceof WP_Screen ) {
+			return;
+		}
+
+		// Now check if current page is plugin settings page.
+		if ( 'toplevel_page_sass-to-css-compiler' !== $current_screen->id ) {
+			return;
+		}
+
+		// check if the user is logged in as well as admin bar is not disabled.
+		if ( current_user_can( 'manage_options' ) && is_admin_bar_showing() ) {
 			// Get plugin page url.
 			$link = admin_url( 'admin.php' );
 
