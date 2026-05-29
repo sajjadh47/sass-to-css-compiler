@@ -2,9 +2,9 @@
 Tags: scss, sass-compiler, compiler, converter, minify
 Contributors: sajjad67
 Author: Sajjad Hossain Sagor
-Tested up to: 6.9
+Tested up to: 7.0
 Requires at least: 5.6
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 Requires PHP: 8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,8 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 1. Compiler Settings
 
 == Changelog ==
+= 2.0.7 =
+- Compatibility checkup for latest wp version 7.0
 = 2.0.6 =
 - Fixed issue: PHP Warning: Attempt to read property "id" on null
 = 2.0.5 =

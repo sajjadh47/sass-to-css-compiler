@@ -3,7 +3,7 @@
 [![Plugin Banner](https://ps.w.org/sass-to-css-compiler/assets/banner-1544x500.png)](https://wordpress.org/plugins/sass-to-css-compiler/)
 
 **Tags:** sass, scss, sass-compiler, compiler, stylesheets, enqueue-scripts, cache, converter, minify \
-**Tested up to:** 6.9 \
+**Tested up to:** 7.0 \
 **Requires PHP:** 8.2
 
 Compile Your Theme-Plugin Sass (.scss) files to .css on the fly.
@@ -51,6 +51,9 @@ Just after installing the plugin, go to settings page and enable the compiler ac
 ![Compiler Settings](https://ps.w.org/sass-to-css-compiler/assets/screenshot-1.png)
 
 ## Changelog
+
+### 2.0.7
+- Compatibility checkup for latest wp version 7.0
 
 ### 2.0.6
 - Fixed issue: PHP Warning: Attempt to read property "id" on null

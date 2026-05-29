@@ -218,9 +218,9 @@ class Sass_To_Css_Compiler_Admin {
 				array(
 					'name'        => 'include',
 					'label'       => __( 'Files To Compile', 'sass-to-css-compiler' ),
-					'type'        => 'text',
-					'desc'        => __( 'Enter a comma-separated list of SCSS file names (without path or extension) to compile. <br><br><strong>Important:</strong> If this field is filled, <em>only</em> the listed files will be compiled. Any other enqueued SCSS files will be ignored.<br><br>To use this feature, enqueue your SCSS files normally with <code>wp_enqueue_style()</code>, but use the <code>.scss</code> extension in the <code>$src</code> parameter:<br><code>wp_enqueue_style( \'my-menu-style\', get_template_directory_uri() . \'/assets/scss/menu.scss\' );</code><br><br>The plugin will automatically compile it to <code>menu.css</code> and serve the compiled CSS.', 'sass-to-css-compiler' ),
-					'placeholder' => __( 'menu.scss, footer.scss', 'sass-to-css-compiler' ),
+					'type'        => 'textarea',
+					'desc'        => __( 'Enter list of SCSS files (relative path) in each line to include in the compilation queue. <br><br><strong>Important:</strong> If this field is filled, <em>only</em> the listed files will be compiled. Any other enqueued SCSS files will be ignored.<br><br>To use this feature, enqueue your SCSS files normally with <code>wp_enqueue_style()</code>, but use the <code>.scss</code> extension in the <code>$src</code> parameter:<br><code>wp_enqueue_style( \'my-menu-style\', get_template_directory_uri() . \'/assets/scss/menu.scss\' );</code><br><br>The plugin will automatically compile it to <code>menu.css</code> and serve the compiled CSS.', 'sass-to-css-compiler' ),
+					'placeholder' => __( '/wp-content/plugins/sass-to-css-compiler/public/scss/menu.scss', 'sass-to-css-compiler' ),
 				),
 				array(
 					'name'    => 'mode',

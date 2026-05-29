@@ -95,25 +95,20 @@ class Sass_To_Css_Compiler_Public {
 			return $src;
 		}
 
-		// Check if the file is from an external domain or CDN or is a relative path (does not start with http or https).
-		if ( ! isset( $parsed_src_url['host'] ) || ! isset( $parsed_src_url['scheme'] ) || $parsed_src_url['host'] !== $parsed_site_url['host'] ) {
-			return $src;
-		}
-
-		// get all comma separated file list.
-		$included_files_list = array_map( 'trim', explode( ',', $included_files ) );
-
-		// check if any valid comma separated file exists.
-		if ( ! in_array( $pathinfo['basename'], $included_files_list, true ) ) {
-			// if not included don't continue.
-			return $src;
-		}
+		// get all new line separated file list.
+		$included_files_list = array_map( 'trim', explode( "\n", $included_files ) );
 
 		$relative_path         = $pathinfo['dirname'];
 		$filename              = $pathinfo['filename'] . '.css';
 		$file_full_path        = rtrim( ABSPATH, '/' ) . $parsed_src_url['path'];
 		$cache_target_dir_path = Sass_To_Css_Compiler::get_cache_dir() . $relative_path;
 		$cache_target_dir_url  = Sass_To_Css_Compiler::get_cache_dir( false, 'baseurl' ) . $relative_path;
+
+		// check if the script is in the included list.
+		if ( ! in_array( trailingslashit( $relative_path ) . $pathinfo['basename'], $included_files_list, true ) ) {
+			// if not included don't continue.
+			return $src;
+		}
 
 		global $wp_filesystem;
 
